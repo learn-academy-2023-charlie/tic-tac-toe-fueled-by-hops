@@ -5,10 +5,16 @@ import './App.css'
 const App = () => {
   const [squares, setSquares] = useState(Array(9).fill(null))
 
+
+const handleClick = (selectedIndex) => {
+  alert(selectedIndex)
+}
+
   return (
     <>
       <h1>Tic Tac Toe</h1>
-      <Square squares={squares}/>
+      <Square squares={squares} handleClick={handleClick}/>
+      
     </>
   )
 }
