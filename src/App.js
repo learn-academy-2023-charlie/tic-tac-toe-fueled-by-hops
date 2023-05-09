@@ -5,9 +5,22 @@ import './App.css'
 const App = () => {
   const [squares, setSquares] = useState(Array(9).fill(null))
 
+  handleClick('i'); {
+    const board = this.state.board.slice();
+    board['i'] = this.state.currentPlayer;
+    this.setState({
+      board: board,
+      currentPlayer: this.state.currentPlayer === "X" ? "O" : "X",
+    });
+  }
 
 const handleClick = (selectedIndex) => {
-  alert(selectedIndex)
+  //alert(selectedIndex)
+
+
+  const gridUpdate = [...squares];
+  gridUpdate [selectedIndex] ="🖕";
+  setSquares(gridUpdate);
 }
 
   return (
