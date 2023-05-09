@@ -1,34 +1,42 @@
 import React from 'react'
 
-const Square = (props) => {
-  console.log(props.squares)
+const Square = ({id, go, setGo, square, squares, setSquares, winningMessage}) => {
+ 
+  const handleClick = (e) => {
+    const taken = e.target.firstChild.classList.contains("circle") || 
+    e.target.firstChild.classList.contains("cross")
+      if(!taken){
+        if(go === "circle"){
+          e.target.firstChild.classList.add("circle")
+          handleSquareChange("circle")
+          setGo("cross")
+        }
+        if(go === "cross"){
+          e.target.firstChild.classList.add("cross")
+          handleSquareChange("cross")
+          setGo("circle")
+        }
+    }  
+  }
+
+  const handleSquareChange = (className) =>{
+     const nextSquares = squares.map((square, index) => {
+        if  (index === id){
+          return className
+        } else{
+          return square
+        }
+      })
+      setSquares(nextSquares)
+  }
   return (
   <>
-  render() {
- (
-    <div className="board">
-      {this.state.board.map((cell, i) => (
-        <div className="cell" key={i} onClick={() => this.handleClick(i)}>
-          {cell}
-        </div>
-      ))}
-    </div>
-  )
-}
-  <div id="grid" >
-   {props.squares.map((value,index)=> {
-    return(
-      <div className="square" 
-      key={index}
-      onClick={() => {props.handleClick(index)}}>
-      {value}
-      </div>
-    )
-   })}
-</div>
+ <div className="square" id={id} onClick={!winningMessage && handleClick}>
+ <div className={square}></div>
+ </div>
+
 </>
 )
 }
-  
 
 export default Square
