@@ -2,4 +2,13 @@
   border: 2px solid black;
   height: 100px;
   width: 100px;
+  font-size: 80px;
+  text-align: center;
+  margin: 0 auto;
+}
+#grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 320px;
+  margin: 0 auto;
 }
